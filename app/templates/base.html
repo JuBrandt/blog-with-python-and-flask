@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% if title %}
+      <title>{{ title }}</title>
+    {% else %}
+      <title>Blog</title>
+    {% endif %}
+  </head>
+  <body>
+    <nav>
+      <h1><a href="#">Blog</a></h1>
+      <ul>
+        <li>
+          <a href="#">Archive</a>
+        </li>
+      </ul>
+    </nav>
+    {% block content %}{% endblock %}
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+          {% for message in messages %}
+            <li>
+              {{ message }}
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    <footer>
+      <p>
+        Here is a footer!
+      </p>
+    </footer>
+  </body>
+</html>
