@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section>
+  <h2>{{ post.blog_title }}</h2>
+  <article>
+    {{ post.blog_body|markdown }}
+  </article>
+  <p class="timestamp">
+    {{ post.blog_date }}
+  </p>
+</section>
+{% endblock %}

@@ -84,15 +84,20 @@ footer {
   padding: 2em;
 }
 
-a {
-  color: #e81c4f;
-}
+a {color: #e81c4f;}
 
 img {
   height: auto;
   max-width: 100%;
 }
 
-.pagination {
-  text-align: center;
+.pagination {text-align: center;}
+
+ul.admin {list-style-type: none;}
+
+.error {text-align: center;}
+
+a.post {
+  text-decoration: none;
+  color: inherit;
 }

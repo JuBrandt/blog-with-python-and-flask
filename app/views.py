@@ -66,3 +66,27 @@ def login():
 @lm.user_loader
 def load_user(user_id):
     return Admin.query.get(int(user_id))
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
+
+@app.route('/admin')
+@login_required
+def admin():
+    return render_template('admin.html', title='Admin')
+
+@app.errorhandler(404)
+def not_found_error(error):
+    return render_template('404.html', title='404'), 404
+
+@app.errorhandler(500)
+def internal_error(error):
+    return render_template('500.html', title='500'), 500
+
+
+@app.route('/detail/<slug>')
+def detail(slug):
+    post = Blog.query.filter_by(blog_address=slug).first()
+    return render_template('detail.html', title=post.blog_title, post=post)

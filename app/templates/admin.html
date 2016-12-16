@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<section>
+  <h2>Administration</h2>
+  <ul class="admin">
+    <li>
+      <a href="{{ url_for('create') }}">Create</a>
+    </li>
+    <li>
+      <a href="{{url_for('logout') }}">Logout</a>
+    </li>
+  </ul>
+</section>
+{% endblock %}

@@ -1,3 +1,5 @@
+{% extends "base.html" %}
+{% block content %}
 <section>
   {% if session['logged_in'] %}
     <h2>You are already logged.</h2>
@@ -30,3 +32,4 @@
     </form>
   {% endif %}
 </section>
+{% endblock %}

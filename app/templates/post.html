@@ -1,9 +1,13 @@
 <section>
-  <h2>{{ post.blog_title }}</h2>
-  <article>
-    {{ post.blog_snippet|markdown}}
-  </article>
-  <p class="timestamp">
-    {{ post.blog_date }}
-  </p>
+  <a href="{{ url_for('detail', slug=post.blog_address) }} " class="post">
+    <h2>
+      {{ post.blog_title }}
+    </h2>
+    <article>
+      {{ post.blog_snippet|markdown }}
+    </article>
+    <p class="timestamp">
+      {{ post.blog_date }}
+    </p>
+  </a>
 </section>
