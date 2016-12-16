@@ -4,7 +4,7 @@ from .models import Blog, Admin
 from sqlalchemy import desc
 from datetime import datetime
 from .forms import BlogForm, LoginForm
-from config import SNIPPET_LENGTH, PER_PAGE
+from config import SNIPPET_LENGTH, PER_PAGE, ARCHIVE_PER_PAGE
 from flask_login import login_user, logout_user, current_user, login_required
 
 @app.route('/')
@@ -60,7 +60,7 @@ def login():
             return redirect(url_for('failure'))
         if password == admin.password:
             login_user(admin)
-            return redirect(url_for('create'))
+            return redirect(url_for('admin'))
     return render_template('login.html',  title='Login', form=form)
 
 @lm.user_loader
@@ -90,3 +90,9 @@ def internal_error(error):
 def detail(slug):
     post = Blog.query.filter_by(blog_address=slug).first()
     return render_template('detail.html', title=post.blog_title, post=post)
+
+@app.route('/archive')
+@app.route('/archive/<int:page>')
+def archive(page=1):
+    posts = Blog.query.order_by(desc(Blog.blog_date)).paginate(page, ARCHIVE_PER_PAGE, False)
+    return render_template('archive.html', title='Archive', posts=posts)

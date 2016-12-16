@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="archive">
+  <h2>Archive</h2>
+  <ul>
+    {% for post in posts.items %}
+      <li>
+        <a href="{{ url_for('detail', slug=post.blog_address) }}">
+          {{ post.blog_title }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+  <div class="pagination">
+    {% if posts.has_prev %}
+      <a href="{{ url_for('archive', page=posts.prev_num) }}">Newer Posts</a>
+    {% endif %}
+      |
+    {% if posts.has_next %}
+      <a href="{{ url_for('archive', page=posts.next_num) }}">Older Posts</a>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}
