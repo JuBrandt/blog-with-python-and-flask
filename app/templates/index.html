@@ -1,13 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <section>
-    <h2>Welcome to Blog!</h2>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque congue ante a nunc volutpat, non mollis est pulvinar. Fusce porta nisi nisi, id viverra elit rutrum quis. Sed venenatis ultrices bibendum. Pellentesque euismod finibus tincidunt. Etiam vitae blandit ex. Aliquam erat volutpat. Morbi hendrerit vitae ex ac imperdiet. Nam vitae felis risus. Nullam vehicula odio eget aliquam scelerisque. Fusce facilisis bibendum leo, ut rhoncus tortor porttitor at. Maecenas ut metus sagittis, gravida sem vel, consectetur lorem. Nullam suscipit facilisis nunc, nec pretium ligula ullamcorper ut. Phasellus ac tempus lectus. Vivamus varius hendrerit nunc ut fringilla.
-    </p>
-    <p>
-      Morbi pretium risus sed mattis tristique. Ut malesuada, risus nec ornare facilisis, neque lorem blandit ante, vitae venenatis lectus ipsum et risus. Integer eros lorem, placerat non vehicula eget, aliquam et ipsum. Quisque pulvinar, leo eget fermentum aliquet, ex turpis vestibulum nisl, eu tempor quam enim at nulla. Aliquam at scelerisque nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed facilisis massa at leo hendrerit commodo. Quisque sit amet velit sapien. Nulla molestie, arcu vitae fermentum maximus, quam odio iaculis enim, vel euismod elit nulla eget nisl.
-    </p>
-  </section>
+  {% for post in posts %}
+    <section>
+      <h2>{{ post.blog_title }}</h2>
+      <p>
+        {{ post.blog_body|safe}}
+      </p>
+      <p>
+        {{ post.blog_date }}
+      </p>
+    </section>
+  {% endfor %}
 {% endblock %}
