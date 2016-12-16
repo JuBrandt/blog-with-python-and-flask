@@ -10,3 +10,23 @@ class Blog(db.Model):
 
     def __repr__(self):
         return self.blog_title
+
+class Admin(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    login = db.Column(db.String(80), unique=True)
+    password = db.Column(db.String(64))
+
+    def is_authenticated(self):
+        return True
+
+    def is_active(self):
+        return True
+
+    def get_id(self):
+        return str(self.id)
+
+    def __unicode__(self):
+        return self.login
+
+    def __repr__(self):
+        return self.login

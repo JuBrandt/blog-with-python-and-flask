@@ -1,0 +1,32 @@
+<section>
+  {% if session['logged_in'] %}
+    <h2>You are already logged.</h2>
+  {% else %}
+    <form action="" method="post" name="login">
+      {{ form.hidden_tag() }}
+      <table>
+        <tr>
+          <td>
+            User:
+          </td>
+          <td>
+            <input type="text" name="login" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Login:
+          </td>
+          <td>
+            <input type="password" name="password" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="submit" value="Login" />
+          </td>
+        </tr>
+      </table>
+    </form>
+  {% endif %}
+</section>

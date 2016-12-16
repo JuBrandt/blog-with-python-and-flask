@@ -1,10 +1,11 @@
-from flask import render_template, redirect, url_for, session
-from app import app, db
-from .models import Blog
+from flask import render_template, redirect, url_for, session, g, request, flash
+from app import app, db, lm
+from .models import Blog, Admin
 from sqlalchemy import desc
 from datetime import datetime
-from .forms import BlogForm
+from .forms import BlogForm, LoginForm
 from config import SNIPPET_LENGTH, PER_PAGE
+from flask_login import login_user, logout_user, current_user, login_required
 
 @app.route('/')
 @app.route('/index')
@@ -16,6 +17,7 @@ def index(page=1):
                             posts=posts)
 
 @app.route('/create', methods=['GET', 'POST'])
+@login_required
 def create():
     form = BlogForm()
     if form.validate_on_submit():
@@ -25,6 +27,8 @@ def create():
         blog_address = blog_title.replace(' ', '-')
         if len(blog_body) > SNIPPET_LENGTH:
             blog_snippet = blog_body[:SNIPPET_LENGTH] + '...'
+        else:
+            blog_snippet = blog_body
         b = Blog(blog_title=blog_title,
                 blog_body=blog_body,
                 blog_date=blog_date,
@@ -39,3 +43,26 @@ def create():
 @app.route('/success')
 def success():
     return render_template('success.html', title='Success')
+
+@app.route('/failure')
+def failure():
+    return render_template('failure.html', title='Failure')
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        login = form.login.data
+        password = form.password.data
+        admin = Admin.query.filter_by(login=login).first()
+        if admin is None:
+            flash('Incorrect login!')
+            return redirect(url_for('failure'))
+        if password == admin.password:
+            login_user(admin)
+            return redirect(url_for('create'))
+    return render_template('login.html',  title='Login', form=form)
+
+@lm.user_loader
+def load_user(user_id):
+    return Admin.query.get(int(user_id))
