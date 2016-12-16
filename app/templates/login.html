@@ -4,6 +4,7 @@
   {% if session['logged_in'] %}
     <h2>You are already logged.</h2>
   {% else %}
+    <h2>Login</h2>
     <form action="" method="post" name="login">
       {{ form.hidden_tag() }}
       <table>

@@ -1,6 +1,7 @@
 * {
   margin: 0;
-  padding: 0:
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -19,6 +20,11 @@ header {
   padding: 2vh 10vw;
 }
 
+h1 {
+  text-align: center;
+  margin: 0 auto;
+}
+
 header h1 {
   display: inline-block;
   vertical-align: top;
@@ -35,11 +41,13 @@ nav {
   position: absolute;
   right: 10vw;
   bottom: 2vh;
-
 }
 
-nav ul {
-  list-style-type: none;
+nav ul {list-style-type: none;}
+
+nav li {
+  float: right;
+  padding: 0 1em;
 }
 
 section {
@@ -48,9 +56,7 @@ section {
   padding: 1em;
 }
 
-section p {
-  margin-top: 1em;
-}
+section p {margin-top: 1em;}
 
 h1,
 h2,

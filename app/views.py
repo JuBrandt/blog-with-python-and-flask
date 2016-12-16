@@ -96,3 +96,7 @@ def detail(slug):
 def archive(page=1):
     posts = Blog.query.order_by(desc(Blog.blog_date)).paginate(page, ARCHIVE_PER_PAGE, False)
     return render_template('archive.html', title='Archive', posts=posts)
+
+@app.route('/anout')
+def about():
+    return render_template('about.html', title='About')
