@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: "Arial", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fire Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   line-height: 1.5;
   color: #566b78;
   -moz-font-smoothing: grayscale;
@@ -22,7 +22,8 @@ header {
 
 h1 {
   text-align: center;
-  margin: 0 auto;
+  margin-top: 1em;
+  font-size: 4em;
 }
 
 header h1 {
@@ -97,14 +98,51 @@ img {
   max-width: 100%;
 }
 
-.pagination {text-align: center;}
+.pagination {
+  position: relative;
+}
+
+.pagination a {
+  text-decoration: none;
+  color: inherit;
+  background-color: white;
+  transition: background-color 1s;
+}
+
+.pagination a:hover {
+  background-color: red;
+}
+
+.nposts,
+.oposts {
+  position: absolute;
+  border: 1px solid black;
+  padding: 0.5em 1em;
+}
+
+.nposts {left: 1.5em;}
+
+.oposts {right: 1.5em;}
 
 .admin ul,
 .archive ul {list-style-type: none;}
 
+.admin li,
+.archive li {margin: 1.5em 2em;}
+
+.admin a,
+.archive a {
+  text-decoration: none;
+}
+
 .error {text-align: center;}
 
-a.post {
+.post a {
   text-decoration: none;
   color: inherit;
+  transition: color 0.5s;
+}
+
+.post a:hover {
+  color: #e81c4f;
 }
