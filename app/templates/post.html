@@ -3,7 +3,7 @@
     <a href="{{ url_for('detail', slug=post.blog_address) }}">{{ post.blog_title }}</a>
   </h2>
   <p class="timestamp">
-    Posted on {{ post.blog_date.strftime('%B %d, %Y') }}
+    <i>Posted on {{ post.blog_date.strftime('%B %d, %Y') }}</i>
   </p>
   <article>
     {{ post.blog_snippet|markdown }}

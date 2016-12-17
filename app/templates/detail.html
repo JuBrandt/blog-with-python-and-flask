@@ -3,11 +3,11 @@
 {% block content %}
 <section>
   <h2>{{ post.blog_title }}</h2>
+  <p class="timestamp">
+    <i>Posted on {{ post.blog_date.strftime('%B %d, %Y') }}</i>
+  </p>
   <article>
     {{ post.blog_body|markdown }}
   </article>
-  <p class="timestamp">
-    {{ post.blog_date }}
-  </p>
 </section>
 {% endblock %}
