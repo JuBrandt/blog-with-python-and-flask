@@ -2,6 +2,7 @@ import os
 
 WTF_CSRF_ENABLED = True
 SECRET_KEY = 'secret'  #should be unique to app
+DEBUG = True
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
