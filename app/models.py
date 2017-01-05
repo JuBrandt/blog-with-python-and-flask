@@ -1,5 +1,6 @@
 from app import db
 
+
 class Blog(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     blog_title = db.Column(db.String(120), index=True, unique=True)
@@ -10,6 +11,7 @@ class Blog(db.Model):
 
     def __repr__(self):
         return self.blog_title
+
 
 class Admin(db.Model):
     id = db.Column(db.Integer, primary_key=True)
