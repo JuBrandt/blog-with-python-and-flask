@@ -43,6 +43,29 @@ def create():
     return render_template('create.html', title='Create', form=form)
 
 
+@app.route('/edit/<slug>', methods=['GET', 'POST'])
+@login_required
+def edit(slug):
+    post = Blog.query.filter_by(blog_address=slug).first()
+    form = BlogForm()
+    if form.validate_on_submit():
+        post.blog_title = form.blog_title.data
+        post.blog_body = form.blog_body.data
+        post.blog_date = datetime.utcnow()
+        post.blog_address = post.blog_title.replace(' ', '-')
+        if len(post.blog_body) > SNIPPET_LENGTH:
+            post.blog_snippet = post.blog_body[:SNIPPET_LENGTH] + '...'
+        else:
+            post.blog_snippet = post.blog_body
+        db.session.commit()
+        # return render_template('success.html', title='Success')
+        return redirect(url_for('success'))
+    return render_template('edit.html',
+                           title='Edit - ' + post.blog_title,
+                           form=form,
+                           post=post)
+
+
 @app.route('/success')
 def success():
     return render_template('success.html', title='Success')
