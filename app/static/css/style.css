@@ -101,7 +101,12 @@ img {
   max-width: 100%;
 }
 
-.pagination {position: relative;}
+.pagination {
+  position: relative;
+  max-width: 40em;
+  margin: 0 auto;
+  padding: 1em;
+}
 
 .pagination a {
   text-decoration: none;

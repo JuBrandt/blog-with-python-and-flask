@@ -12,16 +12,17 @@
       </li>
     {% endfor %}
   </ul>
-  <!--
   <div class="pagination">
     {% if posts.has_prev %}
-      <a href="{{ url_for('archive', page=posts.prev_num) }}">Newer Posts</a>
+      <a href="{{ url_for('archive', page=posts.prev_num) }}" class="nposts">
+        <i class="fa fa-arrow-left" aria-hidden="true"></i> Newer Posts
+      </a>
     {% endif %}
-      |
     {% if posts.has_next %}
-      <a href="{{ url_for('archive', page=posts.next_num) }}">Older Posts</a>
+      <a href="{{ url_for('archive', page=posts.next_num) }}" class="oposts">
+        Older Posts <i class="fa fa-arrow-right" aria-hidden="true"></i>
+      </a>
     {% endif %}
   </div>
--->
 </section>
 {% endblock %}
