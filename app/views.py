@@ -7,6 +7,30 @@ from .forms import BlogForm, LoginForm
 from config import SNIPPET_LENGTH, PER_PAGE, ARCHIVE_PER_PAGE
 from flask_login import login_user, logout_user, login_required
 
+def make_snippet(text):
+    lines = text[:SNIPPET_LENGTH].split('\n')
+    can_have_image = True
+    snippet = []
+
+    for line in lines:
+        if line[0] == '!':
+            if can_have_image:
+                snippet.append(line)
+                can_have_image = False
+        else:
+            snippet.append(line)
+
+    if snippet[-1].count('>') % 2 != 0:
+        del snippet[-1]
+
+    if snippet[-1][-1] != '.':
+        if snippet[-1][-1] == ' ':
+            snippet[-1] = snippet[-1][:-1] + '...'
+        else:
+            snippet[-1] += '...'
+
+    return '\n'.join(snippet)
+
 
 @app.route('/')
 @app.route('/index')
@@ -27,10 +51,7 @@ def create():
         blog_body = form.blog_body.data
         blog_date = datetime.utcnow()
         blog_address = blog_title.replace(' ', '-')
-        if len(blog_body) > SNIPPET_LENGTH:
-            blog_snippet = blog_body[:SNIPPET_LENGTH] + '...'
-        else:
-            blog_snippet = blog_body
+        blog_snippet = make_snippet(blog_body)
         b = Blog(blog_title=blog_title,
                  blog_body=blog_body,
                  blog_date=blog_date,
@@ -38,7 +59,6 @@ def create():
                  blog_snippet=blog_snippet)
         db.session.add(b)
         db.session.commit()
-        # return render_template('success.html', title='Success')
         return redirect(url_for('success'))
     return render_template('create.html', title='Create', form=form)
 
@@ -53,12 +73,8 @@ def edit(slug):
         post.blog_body = form.blog_body.data
         post.blog_date = datetime.utcnow()
         post.blog_address = post.blog_title.replace(' ', '-')
-        if len(post.blog_body) > SNIPPET_LENGTH:
-            post.blog_snippet = post.blog_body[:SNIPPET_LENGTH] + '...'
-        else:
-            post.blog_snippet = post.blog_body
+        post.blog_snippet = make_snippet(post.blog_body)
         db.session.commit()
-        # return render_template('success.html', title='Success')
         return redirect(url_for('success'))
     return render_template('edit.html',
                            title='Edit - ' + post.blog_title,

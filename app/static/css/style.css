@@ -28,6 +28,8 @@ h1 {
   font-size: 4em;
 }
 
+h2 {font-size: 2em;}
+
 header h3 {
   display: inline-block;
   vertical-align: top;
@@ -104,14 +106,16 @@ a {
 
 header a,
 footer a,
-.post a {
+.post a,
+.pagination a {
   color: inherit;
   transition: color 1s;
 }
 
 header a:hover,
 footer a:hover,
-.post a:hover {color: #e93b3b;}
+.post a:hover,
+.pagination a:hover {color: #e93b3b;}
 
 img {
   display: block;
@@ -129,7 +133,7 @@ img {
 
 .pagination a {
   text-decoration: none;
-  transition: background-color 1s;
+  transition: background-color 1s, color 1s;
   font-weight: bold;
 }
 
@@ -172,11 +176,13 @@ img {
   justify-content: center;
 }
 
-blockquote {
+blockquote,
+.caption {
   padding-left: 1em;
   color: #7a7a7a;
-  border-left: solid 3px #7a7a7a;
 }
+
+blockquote {border-left: solid 3px #7a7a7a;}
 
 hr {margin: 2em 0;}
 
@@ -187,3 +193,8 @@ hr {margin: 2em 0;}
 .code-func {color: #268bd2}
 
 .code-str {color: #859900}
+
+.caption {
+  font-size: 0.8em;
+  vertical-align: top;
+}
