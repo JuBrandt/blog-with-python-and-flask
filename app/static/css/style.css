@@ -97,8 +97,10 @@ a {
 a:hover {color: #e93b3b;}
 
 img {
+  display: block;
   height: auto;
   max-width: 100%;
+  margin: 0 auto;
 }
 
 .pagination {
