@@ -65,16 +65,25 @@ h2 {
   padding-top: 1em;
 }
 
-pre {
+pre,
+code {
   background: #f5f7f9;
-  border-bottom: 1px solid #d8dee9;
-  color: #a7adba;
+  color: #8a92a4;
   -moz-font-smoothing: grayscale;
   -webkit-font-smoothing: initial;
+}
+
+pre {
+  border-bottom: 1px solid #d8dee9;
   overflow: auto;
   white-space: pre-wrap;
   padding: 1em;
   border-left: 2px solid #69c;
+}
+
+code {
+  padding: 0 0.25em;
+  border-radius: 3px;
 }
 
 footer {
@@ -90,11 +99,19 @@ footer {
 footer i {padding: 0 0.25em;}
 
 a {
+  color: #e93b3b;
+}
+
+header a,
+footer a,
+.post a {
   color: inherit;
   transition: color 1s;
 }
 
-a:hover {color: #e93b3b;}
+header a:hover,
+footer a:hover,
+.post a:hover {color: #e93b3b;}
 
 img {
   display: block;
@@ -154,3 +171,19 @@ img {
   display: flex;
   justify-content: center;
 }
+
+blockquote {
+  padding-left: 1em;
+  color: #7a7a7a;
+  border-left: solid 3px #7a7a7a;
+}
+
+hr {margin: 2em 0;}
+
+.code-op {color: #af005f}
+
+.code-num {color: #cb4b16}
+
+.code-func {color: #268bd2}
+
+.code-str {color: #859900}
