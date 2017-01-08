@@ -11,8 +11,9 @@ body {
   -moz-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   position: relative;
-  padding-bottom: 12rem;
+  padding-bottom: 18rem;
   min-height: 100vh;
+  font-size: 1.5em;
 }
 
 header {
@@ -27,11 +28,14 @@ header {
 
 h1 {
   text-align: center;
-  margin-top: 1em;
+  margin-top: 0.8em;
   font-size: 4em;
 }
 
-h2 {font-size: 2em;}
+h2 {
+  font-size: 1.8em;
+  margin-top: 0.8em;
+}
 
 header h3 {
   display: inline-block;
@@ -58,17 +62,12 @@ nav li {
 }
 
 section {
-  max-width: 40em;
+  max-width: 30em;
   margin: 0 auto;
   padding: 1em;
 }
 
 section p {margin-top: 1em;}
-
-h2 {
-  margin-top: 1em;
-  padding-top: 1em;
-}
 
 pre,
 code {
