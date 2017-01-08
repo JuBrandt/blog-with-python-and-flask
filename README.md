@@ -1,5 +1,4 @@
 # Blog with Python and Flask
-***
 
 A simple blogging platform made with Python and Flask.
 
@@ -14,12 +13,10 @@ Features:
 
 
 ## Installation
-***
 
 Clone repository. Install Python modules from requirements.txt. Run db_create.py for initial database creation. Run run.py (if locally connect via 127.0.0.1:5000).
 
 
 ## Other
-***
 
 This is very much a work in progress and has yet to be deployed.
