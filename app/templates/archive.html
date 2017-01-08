@@ -9,6 +9,9 @@
         <a href="{{ url_for('detail', slug=post.blog_address) }}">
           {{ post.blog_title }}
         </a>
+        <p class="timestamp">
+          <i> {{ post.blog_date.strftime('%B %d, %Y')  }}</i>
+        </p>
       </li>
     {% endfor %}
   </ul>

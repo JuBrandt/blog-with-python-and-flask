@@ -1,3 +1,4 @@
+/*---------------------- General ----------------------*/
 * {
   margin: 0;
   padding: 0;
@@ -16,16 +17,6 @@ body {
   font-size: 1.5em;
 }
 
-header {
-  background-color: #363636;
-  line-height: 1.2;
-  max-width: none;
-  position: relative;
-  padding: 2vh 10vw;
-  box-shadow: 0 1px 3px 2px rgba(0, 0, 0, 0.5);
-  color: #fffbfb;
-}
-
 h1 {
   text-align: center;
   margin-top: 0.8em;
@@ -35,6 +26,55 @@ h1 {
 h2 {
   font-size: 1.8em;
   margin-top: 0.8em;
+}
+
+section {
+  max-width: 30em;
+  margin: 0 auto;
+  padding: 1em;
+}
+
+section p {margin-top: 1em;}
+
+/*---------------------- Links ----------------------*/
+a {color: #e93b3b;}
+
+header a,
+footer a,
+.post a,
+.pagination a {
+  color: inherit;
+  transition: color 1s;
+}
+
+header a:hover,
+footer a:hover,
+.post a:hover,
+.pagination a:hover {color: #e93b3b;}
+
+.admin a,
+.archive a {
+  text-decoration: none;
+  border-bottom: none;
+  border-bottom: 2px solid white;
+  transition: border-color 1s ease;
+  font-weight: bold;
+}
+
+.admin a:hover,
+.archive a:hover {border-color: #e93b3b;}
+
+.post a {text-decoration: none;}
+
+/*---------------------- Header ----------------------*/
+header {
+  background-color: #363636;
+  line-height: 1.2;
+  max-width: none;
+  position: relative;
+  padding: 2vh 10vw;
+  box-shadow: 0 1px 3px 2px rgba(0, 0, 0, 0.5);
+  color: #fffbfb;
 }
 
 header h3 {
@@ -61,14 +101,60 @@ nav li {
   padding: 0 1em;
 }
 
-section {
-  max-width: 30em;
-  margin: 0 auto;
+/*---------------------- Footer ----------------------*/
+footer {
+  margin-top: 4em;
+  text-align: center;
+  background-color: #363636;
+  color: white;
   padding: 1em;
+  box-shadow: inset 0 4px 3px -2px rgba(0, 0, 0, 0.5);
+  font-size: 2em;
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 0;
 }
 
-section p {margin-top: 1em;}
+footer i {padding: 0 0.25em;}
 
+.copyright {
+  display: block;
+  font-size: 0.4em;
+}
+
+.flex {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+/*---------------------- Reusable ----------------------*/
+img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.timestamp {font-size: 0.8em;}
+
+blockquote {border-left: solid 3px #7a7a7a;}
+
+.caption {
+  font-size: 0.8em;
+  vertical-align: top;
+}
+
+blockquote,
+.caption {
+  padding-left: 1em;
+  color: #7a7a7a;
+}
+
+hr {margin: 2em 0;}
+
+/*---------------------- Code ----------------------*/
 pre,
 code {
   background: #f5f7f9;
@@ -90,47 +176,15 @@ code {
   border-radius: 3px;
 }
 
-footer {
-  margin-top: 4em;
-  text-align: center;
-  background-color: #363636;
-  color: white;
-  padding: 1em;
-  box-shadow: inset 0 4px 3px -2px rgba(0, 0, 0, 0.5);
-  font-size: 2em;
-  position: absolute;
-  right: 0;
-  left: 0;
-  bottom: 0;
+.code-op {color: #af005f}
 
-}
+.code-num {color: #cb4b16}
 
-footer i {padding: 0 0.25em;}
+.code-func {color: #268bd2}
 
-a {
-  color: #e93b3b;
-}
+.code-str {color: #859900}
 
-header a,
-footer a,
-.post a,
-.pagination a {
-  color: inherit;
-  transition: color 1s;
-}
-
-header a:hover,
-footer a:hover,
-.post a:hover,
-.pagination a:hover {color: #e93b3b;}
-
-img {
-  display: block;
-  height: auto;
-  max-width: 100%;
-  margin: 0 auto;
-}
-
+/*---------------------- Pagination ----------------------*/
 .pagination {
   position: relative;
   max-width: 40em;
@@ -157,62 +211,15 @@ img {
 
 .oposts {right: 1.5em;}
 
+/*---------------------- Page Specific ----------------------*/
 .admin ul,
 .archive ul {list-style-type: none;}
 
 .admin li,
 .archive li {margin: 1.5em 2em;}
 
-.admin a,
-.archive a {
-  text-decoration: none;
-  border-bottom: none;
-  border-bottom: 2px solid white;
-  transition: border-color 1s ease;
-  font-weight: bold;
-}
+.archive p {margin-top: 0;}
 
-.admin a:hover,
-.archive a:hover {
-  border-color: #e93b3b;
-}
+.archive .timestamp {font-size: 0.6em;}
 
 .error {text-align: center;}
-
-.post a {text-decoration: none;}
-
-.timestamp {font-size: 0.8em;}
-
-.copyright {
-  display: block;
-  font-size: 0.4em;
-}
-
-.flex {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-}
-
-blockquote,
-.caption {
-  padding-left: 1em;
-  color: #7a7a7a;
-}
-
-blockquote {border-left: solid 3px #7a7a7a;}
-
-hr {margin: 2em 0;}
-
-.code-op {color: #af005f}
-
-.code-num {color: #cb4b16}
-
-.code-func {color: #268bd2}
-
-.code-str {color: #859900}
-
-.caption {
-  font-size: 0.8em;
-  vertical-align: top;
-}
