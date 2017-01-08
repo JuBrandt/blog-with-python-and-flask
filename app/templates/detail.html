@@ -10,4 +10,16 @@
     {{ post.blog_body|markdown }}
   </article>
 </section>
+<div class="pagination">
+  {% if next_address %}
+    <a href="{{ url_for('detail', slug=next_address) }}" class="nposts">
+      <i class="fa fa-arrow-left" aria-hidden="true"></i> Next Post
+    </a>
+  {% endif %}
+  {% if previous_address %}
+    <a href="{{ url_for('detail', slug=previous_address) }}" class="oposts">
+      Previous Post <i class="fa fa-arrow-right" aria-hidden="true"></i>
+    </a>
+  {% endif %}
+</div>
 {% endblock %}

@@ -28,8 +28,9 @@
     {% block content %}{% endblock %}
     <footer>
       <p class="flex">
-        <a href="#"><i class="fa fa-github" aria-hidden="true"></i></a>
-        <a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+        <a href="https://github.com/scripts-richard" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+        <a href="mailto:test@mail.com"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
+        <a href="{{ url_for('static', filename='rss/myrss.xml') }}"><i class="fa fa-rss" aria-hidden="true"></i></a>
       </p>
       <p class="copyright">
         <i class="fa fa-copyright" aria-hidden="true"></i>Blog 2017

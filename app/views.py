@@ -76,7 +76,6 @@ def edit(slug):
     if form.validate_on_submit():
         post.blog_title = form.blog_title.data
         post.blog_body = form.blog_body.data
-        post.blog_date = datetime.utcnow()
         post.blog_address = post.blog_title.replace(' ', '-')
         post.blog_snippet = make_snippet(post.blog_body)
         db.session.commit()
@@ -146,7 +145,22 @@ def internal_error(error):
 def detail(slug):
     # For individual blog post
     post = Blog.query.filter_by(blog_address=slug).first()
-    return render_template('detail.html', title=post.blog_title, post=post)
+    next_post = Blog.query.filter_by(id=post.id + 1).first()
+    previous_post = Blog.query.filter_by(id=post.id - 1).first()
+    if next_post:
+        next_address = next_post.blog_address
+    else:
+        next_address = False
+    if previous_post:
+        previous_address = previous_post.blog_address
+    else:
+        previous_address = False
+    previous_post = Blog.query.filter_by(id=post.id - 1).first()
+    return render_template('detail.html',
+                           title=post.blog_title,
+                           post=post,
+                           next_address=next_address,
+                           previous_address=previous_address)
 
 
 @app.route('/archive')
