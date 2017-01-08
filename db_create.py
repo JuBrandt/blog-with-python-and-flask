@@ -4,6 +4,8 @@ from config import SQLALCHEMY_MIGRATE_REPO as MIGRATE_REPO
 from app import db
 import os.path
 
+"""Creates database when none exists."""
+
 db.create_all()
 if not os.path.exists(MIGRATE_REPO):
     api.create(MIGRATE_REPO, 'database repository')

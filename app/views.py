@@ -7,7 +7,10 @@ from .forms import BlogForm, LoginForm
 from config import SNIPPET_LENGTH, PER_PAGE, ARCHIVE_PER_PAGE
 from flask_login import login_user, logout_user, login_required
 
+
 def make_snippet(text):
+    # Makes a snippet of text / features for use on the index page
+
     lines = text[:SNIPPET_LENGTH].split('\n')
     can_have_image = True
     snippet = []
@@ -66,6 +69,8 @@ def create():
 @app.route('/edit/<slug>', methods=['GET', 'POST'])
 @login_required
 def edit(slug):
+    # For editing existing blog posts
+
     post = Blog.query.filter_by(blog_address=slug).first()
     form = BlogForm()
     if form.validate_on_submit():
@@ -84,11 +89,13 @@ def edit(slug):
 
 @app.route('/success')
 def success():
+    # For admin use to indicate successful post
     return render_template('success.html', title='Success')
 
 
 @app.route('/failure')
 def failure():
+    # For admin use to indicate unsuccessful post
     return render_template('failure.html', title='Failure')
 
 
@@ -137,6 +144,7 @@ def internal_error(error):
 
 @app.route('/detail/<slug>')
 def detail(slug):
+    # For individual blog post
     post = Blog.query.filter_by(blog_address=slug).first()
     return render_template('detail.html', title=post.blog_title, post=post)
 

@@ -4,6 +4,10 @@ from app import db
 from config import SQLALCHEMY_DATABASE_URI as DATABASE_URI
 from config import SQLALCHEMY_MIGRATE_REPO as MIGRATE_REPO
 
+"""Migrates database when change have been made. Includes saving a backup
+and track history.
+"""
+
 v = api.db_version(DATABASE_URI, MIGRATE_REPO)
 migration = MIGRATE_REPO + ('/versions/%03d_migration.py' % (v + 1))
 tmp_module = imp.new_module('old_model')

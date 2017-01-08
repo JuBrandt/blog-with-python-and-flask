@@ -2,6 +2,8 @@ from app import db
 
 
 class Blog(db.Model):
+    """Blog post databse entry."""
+
     id = db.Column(db.Integer, primary_key=True)
     blog_title = db.Column(db.String(120), index=True, unique=True)
     blog_body = db.Column(db.Text, index=True)
@@ -14,6 +16,8 @@ class Blog(db.Model):
 
 
 class Admin(db.Model):
+    """For retrieving and verifying admin database entry."""
+
     id = db.Column(db.Integer, primary_key=True)
     login = db.Column(db.String(80), unique=True)
     password = db.Column(db.String(64))
