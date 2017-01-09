@@ -9,12 +9,12 @@
   <div class="pagination">
     {% if posts.has_prev %}
       <a href="{{ url_for('index', page=posts.prev_num) }}" class="nposts">
-        <i class="fa fa-arrow-left" aria-hidden="true"></i> Newer Posts
+        <i class="fa fa-arrow-left" aria-hidden="true"></i><span class="hide-small"> Newer Posts</span>
       </a>
     {% endif %}
     {% if posts.has_next %}
       <a href="{{ url_for('index', page=posts.next_num) }}" class="oposts">
-        Older Posts <i class="fa fa-arrow-right" aria-hidden="true"></i>
+        <span class="hide-small">Older Posts </span><i class="fa fa-arrow-right" aria-hidden="true"></i>
       </a>
     {% endif %}
   </div>

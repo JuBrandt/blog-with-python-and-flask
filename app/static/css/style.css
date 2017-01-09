@@ -14,7 +14,7 @@ body {
   position: relative;
   padding-bottom: 18rem;
   min-height: 100vh;
-  font-size: 1.5em;
+  font-size: 1.3em;
 }
 
 h1 {
@@ -29,7 +29,7 @@ h2 {
 }
 
 section {
-  max-width: 30em;
+  max-width: 40em;
   margin: 0 auto;
   padding: 1em;
 }
@@ -72,13 +72,11 @@ header {
   line-height: 1.2;
   max-width: none;
   position: relative;
-  padding: 2vh 10vw;
   box-shadow: 0 1px 3px 2px rgba(0, 0, 0, 0.5);
   color: #fffbfb;
 }
 
 header h3 {
-  display: inline-block;
   vertical-align: top;
   font-size: 1.5em;
 }
@@ -86,12 +84,8 @@ header h3 {
 header a {text-decoration: none;}
 
 nav {
-  display: inline-block;
-  vertical-align: middle;
-  position: absolute;
-  right: 10vw;
-  bottom: 2vh;
   font-weight: bold;
+  padding: 0.25em 0;
 }
 
 nav ul {list-style-type: none;}
@@ -224,3 +218,30 @@ code {
 .archive .timestamp {font-size: 0.6em;}
 
 .error {text-align: center;}
+
+/*---------------------- Responsive ----------------------*/
+.hide-small {display: none;}
+
+header {padding: 2em 1em;}
+
+@media screen and (min-width: 400px) {
+  header h3 {display: inline-block;}
+}
+
+@media screen and (min-width: 480px) {
+  header {padding: 1em 1em;}
+
+  nav {
+  position: absolute;
+  right: 1em;
+  bottom: 0.5em;
+  }
+
+  .hide-small {display: inline;}
+}
+
+@media screen and (min-width: 850px) {
+  header {padding: 1em 5em;}
+
+  nav {right: 5em;}
+}
