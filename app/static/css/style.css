@@ -28,6 +28,11 @@ h2 {
   margin-top: 0.8em;
 }
 
+h3 {
+  vertical-align: top;
+  font-size: 1.5em;
+}
+
 section {
   max-width: 40em;
   margin: 0 auto;
@@ -74,11 +79,6 @@ header {
   position: relative;
   box-shadow: 0 1px 3px 2px rgba(0, 0, 0, 0.5);
   color: #fffbfb;
-}
-
-header h3 {
-  vertical-align: top;
-  font-size: 1.5em;
 }
 
 header a {text-decoration: none;}
@@ -225,7 +225,7 @@ code {
 header {padding: 2em 1em;}
 
 @media screen and (min-width: 400px) {
-  header h3 {display: inline-block;}
+  h3 {display: inline-block;}
 }
 
 @media screen and (min-width: 480px) {
@@ -244,4 +244,10 @@ header {padding: 2em 1em;}
   header {padding: 1em 5em;}
 
   nav {right: 5em;}
+}
+
+@media print {
+  header,
+  footer,
+  .pagination {display: none;}
 }

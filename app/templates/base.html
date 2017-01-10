@@ -2,18 +2,21 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A Python coding blog." />
+    <meta name="keywords" content="Python, coding, lifestyle, blog" />
+    <meta name="author" content="Richard Mills" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}" />
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='third_party/font-awesome-4.7.0/css/font-awesome.min.css') }}" />
     {% if title %}
       <title>{{ title }}</title>
     {% else %}
-      <title>Blog</title>
+      <title>HowDoLife.com</title>
     {% endif %}
   </head>
   <body>
     <header>
-      <h3><a href="{{ url_for('index') }}">Blog</a></h3>
+      <h3><a href="{{ url_for('index') }}">HowDoLife</a></h3>
       <nav>
         <ul>
           <li>
@@ -29,11 +32,11 @@
     <footer>
       <p class="flex">
         <a href="https://github.com/scripts-richard" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
-        <a href="mailto:test@mail.com"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
+        <a href="mailto:admin@howdolife.com"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
         <a href="{{ url_for('static', filename='rss/myrss.xml') }}"><i class="fa fa-rss" aria-hidden="true"></i></a>
       </p>
       <p class="copyright">
-        <i class="fa fa-copyright" aria-hidden="true"></i>Blog 2017
+        <i class="fa fa-copyright" aria-hidden="true"></i>HowDoLife.com 2017
       </p>
     </footer>
   </body>
