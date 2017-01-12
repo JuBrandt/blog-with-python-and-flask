@@ -219,6 +219,35 @@ code {
 
 .error {text-align: center;}
 
+/*---------------------- Inputs ----------------------*/
+
+input[type=text],
+textarea {
+  width: 100%;
+  font-size: 1em;
+  padding: 0.25em;
+  margin-bottom: 1em;
+}
+
+textarea {height: 40em;}
+
+input[type=submit] {
+  font-size: 1em;
+  cursor: pointer;
+  padding: 0.5em 1em;
+  background-color: white;
+  border: 1px solid black;
+  font-weight: bold;
+  transition: background-color 1s, color 1s;
+}
+
+input[type=submit]:hover {
+  background-color: #bebebe;
+  color: #e93b3b;
+}
+
+.button {text-align: center;}
+
 /*---------------------- Responsive ----------------------*/
 .hide-small {display: none;}
 

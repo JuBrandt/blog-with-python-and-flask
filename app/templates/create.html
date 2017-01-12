@@ -5,26 +5,17 @@
   <h2>Create Post</h2>
   <form action="" method="post" name="create">
     {{ form.hidden_tag() }}
-    <table>
-      <tr>
-        <td>
-          Post Title:
-        </td>
-        <td>
-          <input type="text" name="blog_title" />
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Post Body:
-        </td>
-        <td></td>
-      </tr>
-    </table>
-    <textarea name="blog_body" rows="4" cols="50"></textarea>
     <p>
-      <input type="submit" value="Publish" />
+      Post Title
     </p>
+    <input type="text" name="blog_title" autocomplete="off"/>
+    <p>
+      Post Body
+    </p>
+    <textarea name="blog_body"></textarea>
+    <div class="button">
+      <input type="submit" value="Publish" />
+    </div>
   </form>
 </section>
 {% endblock %}
