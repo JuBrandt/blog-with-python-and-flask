@@ -27,19 +27,22 @@ def make_snippet(text):
                     snippet.append(line)
                     can_have_image = False
             else:
-                snippet.append('\n')
+                snippet.append(line)
         else:
-            snippet.append(line)
+            snippet.append('\n')
 
     # Remove broken html
+
     if snippet[-1].count('>') % 2 != 0:
         del snippet[-1]
 
     snippet = '\n'.join(snippet)
 
     # Decide whether to add '...' if incomplete sentence
+
     if snippet[-1] != '.':
         snippet += '...'
+
     return snippet
 
 
@@ -75,7 +78,7 @@ def create():
                  blog_snippet=blog_snippet)
         db.session.add(b)
         db.session.commit()
-        return redirect(url_for('success/'))
+        return redirect(url_for('success'))
     return render_template('create.html', title='Create', form=form)
 
 
@@ -92,7 +95,7 @@ def edit(slug):
         post.blog_address = make_address(post.blog_title)
         post.blog_snippet = make_snippet(post.blog_body)
         db.session.commit()
-        return redirect(url_for('success/'))
+        return redirect(url_for('success'))
     return render_template('edit.html',
                            title='Edit - ' + post.blog_title,
                            form=form,
@@ -120,10 +123,10 @@ def login():
         admin = Admin.query.filter_by(login=login).first()
         if admin is None:
             flash('Incorrect login!')
-            return redirect(url_for('failure/'))
+            return redirect(url_for('failure'))
         if password == admin.password:
             login_user(admin)
-            return redirect(url_for('admin/'))
+            return redirect(url_for('admin'))
     return render_template('login.html',  title='Login', form=form)
 
 
