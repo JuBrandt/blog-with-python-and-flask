@@ -1,0 +1,297 @@
+$font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fire Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+$primary-color: #363636;
+$secondary-color: #e93b3b;
+$white: #fff;
+$shadow: rgba(0, 0, 0, 0.5);
+$off-white: #fffbfb;
+$grey: #7a7a7a;
+$light-grey: #bebebe;
+$code-back: #f5f7f9;
+$code-text: #8a92a4;
+$code-accent: #d8dee9;
+$code-border: #69c;
+$code-op: #af005f;
+$code-num: #cb4b16;
+$code-func: #268bd2;
+$code-str: #859900;
+
+/*---------------------- General ----------------------*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font: 1.3em $font-stack;
+  line-height: 1.5;
+  color: $primary-color;
+  position: relative;
+  padding-bottom: 18rem;
+  min-height: 100vh;
+  -moz-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  text-align: center;
+  font-size: 3em;
+  margin-top: 0.8em;
+}
+
+h2 {
+  font-size: 1.8em;
+  margin-top: 0.8em;
+}
+
+h3 {
+  vertical-align: top;
+  font-size: 1.5em;
+}
+
+section {
+  max-width: 40em;
+  margin: 0 auto;
+  padding: 1em;
+}
+
+section p {margin-top: 1em;}
+
+/*---------------------- Links ----------------------*/
+a {color: $secondary-color;}
+
+header a,
+footer a {color: $off-white;}
+
+header a,
+.post a {text-decoration: none;}
+
+.post a,
+.pagination a {color: $primary-color;}
+
+header a,
+footer a,
+.post a {transition: color 1s;}
+
+header a:hover,
+footer a:hover,
+.post a:hover,
+.pagination a:hover {color: $secondary-color;}
+
+.admin a,
+.archive a {
+  text-decoration: none;
+  border-bottom: 2px solid $white;
+  font-weight: bold;
+  transition: border-color 1s ease;
+}
+
+.admin a:hover,
+.archive a:hover {border-color: $secondary-color;}
+
+.pagination a {
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 1s, color 1s;
+}
+
+.pagination a:hover {background-color: $light-grey;}
+
+header nav a {
+  background-color: $secondary-color;
+  color: $off-white;
+  padding: 0.1em 0.3em;
+  transition: color 1s, background-color 1s;
+  box-shadow: inset 0 0 5px $shadow;
+}
+
+header nav a:hover{
+  color: $secondary-color;
+  background-color: $light-grey;
+}
+
+/*---------------------- Header ----------------------*/
+header {
+  background-color: $primary-color;
+  line-height: 1.2;
+  max-width: none;
+  box-shadow: 0 1px 3px 2px $shadow;
+  padding: 2em 4em;
+}
+
+header h3 {
+  display: block;
+  width: 100%;
+  text-align: left;
+}
+
+nav {
+  font-weight: bold;
+  display: block;
+  width: 100%;
+  margin-top: 0.5em;
+
+  ul {
+    list-style-type: none;
+
+  }
+
+  li {
+    display: inline-block;
+    padding: 0 0.5em;
+    float: right;
+  }
+}
+
+/*---------------------- Footer ----------------------*/
+footer {
+  margin-top: 4em;
+  text-align: center;
+  background-color: $primary-color;
+  color: $off-white;
+  padding: 1em;
+  box-shadow: insetn 0 4px 3px -2px $shadow;
+  font-size: 2em;
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 0;
+
+  i {padding: 0 0.25em;}
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.copyright {
+  display: block;
+  font-size: 0.4em;
+}
+
+/*---------------------- Reusable ----------------------*/
+img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+hr {margin: 2em 0;}
+
+blockquote {border-left: solid 3px $grey;}
+
+.timestamp {font-size: 0.6em;}
+
+.caption {
+  font-size: 0.8em;
+  vertical-align: top;
+}
+
+blockquote,
+.caption,
+.timestamp {
+  padding-left: 1em;
+  color: $grey;
+}
+
+/*---------------------- Code ----------------------*/
+pre,
+code {
+  background: $code-back;
+  color: $code-text;
+}
+
+pre {
+  border-bottom: 1px solid $code-accent;
+  overflow: auto;
+  white-space: pre-wrap;
+  padding: 1em;
+  border-left: 2px solid $code-border;
+}
+
+code {
+  padding: 0 0.25em;
+  border-radius: 3px;
+}
+
+.code-op {color: $code-op;}
+
+.code-num {color: $code-num;}
+
+.code-func {color: $code-func;}
+
+.code-str {color: $code-str;}
+
+/*---------------------- Pagination ----------------------*/
+.pagination {
+  position: relative;
+  max-width: 40em;
+  margin: 0 auto;
+  padding: 1em;
+}
+
+.nposts,
+.oposts {
+  position: absolute;
+  border: 1px solid $primary-color;
+  padding: 0.5em 1em;
+}
+
+.nposts {left: 1.5em;}
+
+.oposts {right: 1.5em;}
+
+/*---------------------- Page Specific ----------------------*/
+.admin ul,
+.archive ul {list-style-type: none;}
+
+.admin li,
+.archive li {margin: 1.5em 2em;}
+
+.archive p {margin-top: 0;}
+
+.error {text-align: center;}
+
+/*---------------------- Inputs ----------------------*/
+input[type=text],
+textarea {
+  width: 100%;
+  font-size: 1em;
+  padding: 0.25em;
+  margin-bottom: 1em;
+}
+
+textarea {height: 40em;}
+
+input[type=submit] {
+  font-size: 1em;
+  cursor: pointer;
+  padding: 0.5em 1em;
+  background-color: $white;
+  border: 1px solid $primary-color;
+  font-weight: bold;
+  transition: background-color 1s, color 1s;
+}
+
+input[type=submit]:hover {
+  background-color: $light-grey;
+  color: $secondary-color;
+}
+
+.button {text-align: center;}
+
+/*---------------------- Responsive ----------------------*/
+.hide-small {display: none;}
+
+@media screen and (min-width: 480px) {
+  .hide-small {display: inline-block;}
+}
+
+@media print {
+  header,
+  footer,
+  .pagination {display: none;}
+}
