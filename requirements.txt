@@ -2,11 +2,11 @@
 # https://github.com/Damnever/pigar
 
 # app/__init__.py: 1
-# app/views.py: 1
+# app/views.py: 3
 Flask == 0.11.1
 
 # app/__init__.py: 4
-# app/views.py: 8
+# app/views.py: 10
 Flask_Login == 0.3.2
 
 # app/__init__.py: 3
@@ -18,9 +18,19 @@ Flask_SQLAlchemy == 2.1
 # app/forms.py: 1
 Flask_WTF == 0.13.1
 
-# app/views.py: 4
+# freeze.py: 1
+# freeze_run.py: 1
+Frozen_Flask == 0.13
+
+# app/views.py: 6
 # db_repository/versions/001_migration.py: 1
 SQLAlchemy == 1.1.4
 
 # app/forms.py: 2,3
 WTForms == 2.1
+
+# db_create.py: 1
+# db_migrate.py: 2
+# db_repository/manage.py: 2
+# db_repository/versions/001_migration.py: 2,5
+sqlalchemy_migrate == 0.10.0
