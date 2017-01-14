@@ -50,8 +50,7 @@ def make_address(title):
 
 
 @app.route('/')
-@app.route('/index')
-@app.route('/index/<int:page>')
+@app.route('/index/<int:page>/')
 def index(page=1):
     posts = Blog.query.order_by(desc(Blog.blog_date)).paginate(page, PER_PAGE, False) # noqa
     return render_template('index.html',
@@ -59,7 +58,7 @@ def index(page=1):
                            posts=posts)
 
 
-@app.route('/create', methods=['GET', 'POST'])
+@app.route('/create/', methods=['GET', 'POST'])
 @login_required
 def create():
     form = BlogForm()
@@ -76,11 +75,11 @@ def create():
                  blog_snippet=blog_snippet)
         db.session.add(b)
         db.session.commit()
-        return redirect(url_for('success'))
+        return redirect(url_for('success/'))
     return render_template('create.html', title='Create', form=form)
 
 
-@app.route('/edit/<slug>', methods=['GET', 'POST'])
+@app.route('/edit/<slug>/', methods=['GET', 'POST'])
 @login_required
 def edit(slug):
     # For editing existing blog posts
@@ -93,26 +92,26 @@ def edit(slug):
         post.blog_address = make_address(post.blog_title)
         post.blog_snippet = make_snippet(post.blog_body)
         db.session.commit()
-        return redirect(url_for('success'))
+        return redirect(url_for('success/'))
     return render_template('edit.html',
                            title='Edit - ' + post.blog_title,
                            form=form,
                            post=post)
 
 
-@app.route('/success')
+@app.route('/success/')
 def success():
     # For admin use to indicate successful post
     return render_template('success.html', title='Success')
 
 
-@app.route('/failure')
+@app.route('/failure/')
 def failure():
     # For admin use to indicate unsuccessful post
     return render_template('failure.html', title='Failure')
 
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/login/', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
     if form.validate_on_submit():
@@ -121,10 +120,10 @@ def login():
         admin = Admin.query.filter_by(login=login).first()
         if admin is None:
             flash('Incorrect login!')
-            return redirect(url_for('failure'))
+            return redirect(url_for('failure/'))
         if password == admin.password:
             login_user(admin)
-            return redirect(url_for('admin'))
+            return redirect(url_for('admin/'))
     return render_template('login.html',  title='Login', form=form)
 
 
@@ -133,13 +132,13 @@ def load_user(user_id):
     return Admin.query.get(int(user_id))
 
 
-@app.route('/logout')
+@app.route('/logout/')
 def logout():
     logout_user()
     return redirect(url_for('index'))
 
 
-@app.route('/admin')
+@app.route('/admin/')
 @login_required
 def admin():
     return render_template('admin.html', title='Admin')
@@ -155,7 +154,7 @@ def internal_error(error):
     return render_template('500.html', title='500'), 500
 
 
-@app.route('/detail/<slug>')
+@app.route('/detail/<slug>/')
 def detail(slug):
     # For individual blog post
     post = Blog.query.filter_by(blog_address=slug).first()
@@ -176,13 +175,13 @@ def detail(slug):
     return render_template('404.html', title='404'), 404
 
 
-@app.route('/archive')
-@app.route('/archive/<int:page>')
+@app.route('/archive/')
+@app.route('/archive/<int:page>/')
 def archive(page=1):
     posts = Blog.query.order_by(desc(Blog.blog_date)).paginate(page, ARCHIVE_PER_PAGE, False) # noqa
     return render_template('archive.html', title='Archive', posts=posts)
 
 
-@app.route('/about')
+@app.route('/about/')
 def about():
     return render_template('about.html', title='About')
