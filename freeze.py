@@ -1,7 +1,5 @@
-from flask_frozen import Freezer
-from app import app
-
-freezer = Freezer(app)
+#!/usr/bin/python3
+from app import freezer
 
 if __name__ == '__main__':
     freezer.freeze()

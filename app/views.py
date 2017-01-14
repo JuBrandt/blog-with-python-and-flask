@@ -1,7 +1,7 @@
 import re
 
 from flask import render_template, redirect, url_for, flash
-from app import app, db, lm
+from app import app, db, lm, freezer
 from .models import Blog, Admin
 from sqlalchemy import desc
 from datetime import datetime
@@ -188,3 +188,23 @@ def archive(page=1):
 @app.route('/about/')
 def about():
     return render_template('about.html', title='About')
+
+
+@app.route('/404.html')
+def generate_404():
+    return render_template('404.html', title='404')
+
+
+@app.route('/500.html')
+def generate_500():
+    return render_template('500.html', title='500')
+
+
+@freezer.register_generator
+def error_404():
+    yield '/404.html'
+
+
+@freezer.register_generator
+def error_500():
+    yield '/500.html'
