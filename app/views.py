@@ -62,7 +62,6 @@ def index(page=1):
 
 
 @app.route('/create/', methods=['GET', 'POST'])
-@login_required
 def create():
     form = BlogForm()
     if form.validate_on_submit():
@@ -83,7 +82,6 @@ def create():
 
 
 @app.route('/edit/<slug>/', methods=['GET', 'POST'])
-@login_required
 def edit(slug):
     # For editing existing blog posts
 
@@ -142,7 +140,6 @@ def logout():
 
 
 @app.route('/admin/')
-@login_required
 def admin():
     return render_template('admin.html', title='Admin')
 
