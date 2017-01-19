@@ -8,3 +8,4 @@ rss
 build
 .sass-cache
 style.css.map
+*.png
