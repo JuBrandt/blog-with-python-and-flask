@@ -9,3 +9,5 @@ build
 .sass-cache
 style.css.map
 *.png
+.htaccess
+*.cgi
