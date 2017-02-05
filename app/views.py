@@ -1,13 +1,12 @@
 import re
 
-from flask import render_template, redirect, url_for, flash
-from app import app, db, lm, freezer
-from .models import Blog, Admin
+from flask import render_template, redirect, url_for
+from app import app, db, freezer
+from .models import Blog
 from sqlalchemy import desc
 from datetime import datetime
-from .forms import BlogForm, LoginForm
+from .forms import BlogForm
 from config import SNIPPET_LENGTH, PER_PAGE, ARCHIVE_PER_PAGE
-from flask_login import login_user, logout_user, login_required
 
 
 def make_snippet(text):
@@ -77,7 +76,7 @@ def create():
                  blog_snippet=blog_snippet)
         db.session.add(b)
         db.session.commit()
-        return redirect(url_for('success'))
+        return redirect(url_for('index'))
     return render_template('create.html', title='Create', form=form)
 
 
@@ -93,55 +92,11 @@ def edit(slug):
         post.blog_address = make_address(post.blog_title)
         post.blog_snippet = make_snippet(post.blog_body)
         db.session.commit()
-        return redirect(url_for('success'))
+        return redirect(url_for('index'))
     return render_template('edit.html',
                            title='Edit - ' + post.blog_title,
                            form=form,
                            post=post)
-
-
-@app.route('/success/')
-def success():
-    # For admin use to indicate successful post
-    return render_template('success.html', title='Success')
-
-
-@app.route('/failure/')
-def failure():
-    # For admin use to indicate unsuccessful post
-    return render_template('failure.html', title='Failure')
-
-
-@app.route('/login/', methods=['GET', 'POST'])
-def login():
-    form = LoginForm()
-    if form.validate_on_submit():
-        login = form.login.data
-        password = form.password.data
-        admin = Admin.query.filter_by(login=login).first()
-        if admin is None:
-            flash('Incorrect login!')
-            return redirect(url_for('failure'))
-        if password == admin.password:
-            login_user(admin)
-            return redirect(url_for('admin'))
-    return render_template('login.html',  title='Login', form=form)
-
-
-@lm.user_loader
-def load_user(user_id):
-    return Admin.query.get(int(user_id))
-
-
-@app.route('/logout/')
-def logout():
-    logout_user()
-    return redirect(url_for('index'))
-
-
-@app.route('/admin/')
-def admin():
-    return render_template('admin.html', title='Admin')
 
 
 @app.errorhandler(404)
